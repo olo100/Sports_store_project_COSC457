@@ -1,0 +1,11 @@
+# Copy this file to db.properties (next to the jar) and edit the values.
+# Do NOT check db.properties into git — only the .example template.
+
+db.host=localhost
+db.port=3306
+db.name=sports_storedb
+db.user=root
+db.password=changeme
+
+# Optional JDBC parameters appended to the URL
+db.params=useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
