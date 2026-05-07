@@ -432,3 +432,16 @@ CREATE TABLE APP_AUDIT_LOG (
     record_id VARCHAR(80),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE VENDOR_CONTRACT (                                       
+    contract_id CHAR(36) PRIMARY KEY,                              
+    supplier_id CHAR(36) NOT NULL,                            
+    contract_number VARCHAR(50) UNIQUE NOT NULL,              
+    start_date DATE NOT NULL,                                 
+    end_date DATE NOT NULL,                                   
+    contract_value DECIMAL(12,2) NOT NULL,                    
+    payment_terms VARCHAR(100),                               
+    status VARCHAR(20) NOT NULL,                              
+    notes TEXT,                                               
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,  
+    FOREIGN KEY (supplier_id) REFERENCES SUPPLIER(supplier_id)
+); 
