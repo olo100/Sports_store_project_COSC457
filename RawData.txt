@@ -1,0 +1,460 @@
+============================================================
+CATEGORIZED DATABASE TABLES (TXT FORMAT)
+============================================================
+
+1. RELATIONSHIP VERBS / ACTIONS
+------------------------------------------------------------
+employs
+stocks
+processes
+managed by
+has
+orders
+conducts
+assigned to
+reports to
+scheduled in
+completes
+trains
+oversees
+stocked as
+belongs to
+made by
+supplied by
+receives
+featured_in
+sold_in
+ordered_in
+for sport
+contains
+used_for
+training for
+manufactures
+supplies
+paid via
+uses promo
+returned_via
+makes
+enrolled_in
+writes
+maintains
+places
+rewards
+applied_to
+tracks
+located at
+written by
+reviews
+placed by
+fulfilled by
+delivers
+shipped via
+handles
+returns from
+returns
+schedules
+at location
+completed by
+hours for
+
+
+============================================================
+2. MASTER ENTITY TABLES
+============================================================
+
+------------------------------------------------------------
+STORE_LOCATION
+------------------------------------------------------------
+store_id (PK)
+store_name
+address
+city
+state
+zip_code
+phone
+square_footage
+opening_date
+
+------------------------------------------------------------
+EMPLOYEE
+------------------------------------------------------------
+employee_id (PK)
+store_id (FK)
+department_id (FK)
+manager_id (FK)
+first_name
+last_name
+email
+phone
+hire_date
+hourly_rate
+status
+
+------------------------------------------------------------
+MANAGER
+------------------------------------------------------------
+manager_id (PK)
+employee_id (FK)
+department_id (FK)
+bonus_rate
+promotion_date
+
+------------------------------------------------------------
+DEPARTMENT
+------------------------------------------------------------
+department_id (PK)
+name
+description
+
+------------------------------------------------------------
+INVENTORY
+------------------------------------------------------------
+inventory_id (PK)
+product_id (FK)
+store_id (FK)
+quantity
+reorder_level
+last_restock
+
+------------------------------------------------------------
+PRODUCT
+------------------------------------------------------------
+product_id (PK)
+category_id (FK)
+brand_id (FK)
+supplier_id (FK)
+sport_type_id (FK)
+name
+sku
+description
+price
+cost
+size
+color
+
+------------------------------------------------------------
+CATEGORY
+------------------------------------------------------------
+category_id (PK)
+name
+description
+
+------------------------------------------------------------
+BRAND
+------------------------------------------------------------
+brand_id (PK)
+name
+country
+
+------------------------------------------------------------
+SUPPLIER
+------------------------------------------------------------
+supplier_id (PK)
+name
+contact_name
+email
+phone
+address
+
+------------------------------------------------------------
+SPORT_TYPE
+------------------------------------------------------------
+sport_id (PK)
+name
+description
+season
+
+
+============================================================
+3. SALES / CUSTOMER TABLES
+============================================================
+
+------------------------------------------------------------
+CUSTOMER
+------------------------------------------------------------
+customer_id (PK)
+loyalty_id (FK)
+first_name
+last_name
+email
+phone
+birthday
+signup_date
+
+------------------------------------------------------------
+SALE
+------------------------------------------------------------
+sale_id (PK)
+store_id (FK)
+employee_id (FK)
+customer_id (FK)
+payment_id (FK)
+promotion_id (FK)
+sale_date
+subtotal
+tax
+total
+
+------------------------------------------------------------
+SALE_ITEM
+------------------------------------------------------------
+item_id (PK)
+sale_id (FK)
+product_id (FK)
+quantity
+price
+discount
+total
+
+------------------------------------------------------------
+PAYMENT_METHOD
+------------------------------------------------------------
+payment_id (PK)
+method_name
+description
+
+------------------------------------------------------------
+PROMOTION
+------------------------------------------------------------
+promotion_id (PK)
+code
+name
+discount_pct
+discount_amt
+start_date
+end_date
+type
+
+------------------------------------------------------------
+LOYALTY_PROGRAM
+------------------------------------------------------------
+loyalty_id (PK)
+program_name
+points
+tier
+enrolled
+
+
+============================================================
+4. ONLINE SHOPPING TABLES
+============================================================
+
+------------------------------------------------------------
+ONLINE_ORDER
+------------------------------------------------------------
+order_id (PK)
+customer_id (FK)
+shipment_id (FK)
+order_date
+subtotal
+shipping
+tax
+total
+status
+
+------------------------------------------------------------
+ONLINE_ORDER_ITEM
+------------------------------------------------------------
+item_id (PK)
+order_id (FK)
+product_id (FK)
+quantity
+price
+total
+
+------------------------------------------------------------
+SHIPMENT
+------------------------------------------------------------
+shipment_id (PK)
+carrier_id (FK)
+tracking_number
+ship_date
+delivery_date
+status
+
+------------------------------------------------------------
+SHIPPING_CARRIER
+------------------------------------------------------------
+carrier_id (PK)
+name
+phone
+base_rate
+
+
+============================================================
+5. RETURNS TABLES
+============================================================
+
+------------------------------------------------------------
+RETURN_TRANSACTION
+------------------------------------------------------------
+return_id (PK)
+sale_id (FK)
+return_date
+refund_amount
+reason
+status
+
+------------------------------------------------------------
+RETURN_ITEM
+------------------------------------------------------------
+item_id (PK)
+return_id (FK)
+sale_item_id (FK)
+quantity
+condition
+
+
+============================================================
+6. PURCHASE / SUPPLY TABLES
+============================================================
+
+------------------------------------------------------------
+PURCHASE_ORDER
+------------------------------------------------------------
+order_id (PK)
+supplier_id (FK)
+store_id (FK)
+order_date
+delivery_date
+total
+status
+
+------------------------------------------------------------
+PURCHASE_ORDER_ITEM
+------------------------------------------------------------
+item_id (PK)
+order_id (FK)
+product_id (FK)
+quantity
+cost
+total
+
+
+============================================================
+7. STAFFING / TRAINING TABLES
+============================================================
+
+------------------------------------------------------------
+EMPLOYEE_SCHEDULE
+------------------------------------------------------------
+schedule_id (PK)
+employee_id (FK)
+store_id (FK)
+shift_date
+start_time
+end_time
+shift_type
+
+------------------------------------------------------------
+STORE_HOURS
+------------------------------------------------------------
+hours_id (PK)
+store_id (FK)
+day_of_week
+open_time
+close_time
+is_holiday
+
+------------------------------------------------------------
+TRAINING_RECORD
+------------------------------------------------------------
+training_id (PK)
+employee_id (FK)
+sport_type_id (FK)
+certification
+completed
+expires
+
+
+============================================================
+8. WISHLIST / REVIEWS TABLES
+============================================================
+
+------------------------------------------------------------
+WISHLIST
+------------------------------------------------------------
+wishlist_id (PK)
+customer_id (FK)
+name
+created
+is_public
+
+------------------------------------------------------------
+WISHLIST_ITEM
+------------------------------------------------------------
+item_id (PK)
+wishlist_id (FK)
+product_id (FK)
+added
+priority
+
+------------------------------------------------------------
+PRODUCT_REVIEW
+------------------------------------------------------------
+review_id (PK)
+product_id (FK)
+customer_id (FK)
+rating
+comment
+created
+verified
+
+
+============================================================
+9. PRIMARY KEYS SUMMARY
+============================================================
+store_id
+employee_id
+manager_id
+department_id
+inventory_id
+product_id
+category_id
+brand_id
+supplier_id
+sport_id
+customer_id
+sale_id
+payment_id
+promotion_id
+loyalty_id
+order_id
+shipment_id
+carrier_id
+return_id
+wishlist_id
+review_id
+training_id
+schedule_id
+hours_id
+item_id
+
+
+============================================================
+10. FOREIGN KEY EXAMPLES
+============================================================
+EMPLOYEE.store_id -> STORE_LOCATION.store_id
+EMPLOYEE.department_id -> DEPARTMENT.department_id
+EMPLOYEE.manager_id -> MANAGER.manager_id
+
+PRODUCT.category_id -> CATEGORY.category_id
+PRODUCT.brand_id -> BRAND.brand_id
+PRODUCT.supplier_id -> SUPPLIER.supplier_id
+
+SALE.customer_id -> CUSTOMER.customer_id
+SALE.employee_id -> EMPLOYEE.employee_id
+SALE.payment_id -> PAYMENT_METHOD.payment_id
+
+SALE_ITEM.sale_id -> SALE.sale_id
+SALE_ITEM.product_id -> PRODUCT.product_id
+
+ONLINE_ORDER.customer_id -> CUSTOMER.customer_id
+ONLINE_ORDER.shipment_id -> SHIPMENT.shipment_id
+
+SHIPMENT.carrier_id -> SHIPPING_CARRIER.carrier_id
+
+RETURN_TRANSACTION.sale_id -> SALE.sale_id
+
+WISHLIST.customer_id -> CUSTOMER.customer_id
+WISHLIST_ITEM.product_id -> PRODUCT.product_id
