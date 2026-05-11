@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sports Store Management System - Flyer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d4c5a9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .flyer {
+    width: 820px;
+    background: #f5f0e8;
+    box-shadow: 0 20px 60px rgba(61,53,48,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Top section - dark */
+  .header {
+    background: #3d3530;
+    padding: 48px 52px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: rgba(139,115,85,0.12);
+    border-radius: 50%;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: 20%;
+    width: 200px; height: 200px;
+    background: rgba(176,112,80,0.1);
+    border-radius: 50%;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d4c5a9;
+    margin-bottom: 18px;
+  }
+
+  .main-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 46px;
+    font-weight: 700;
+    color: #f5f0e8;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .main-subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #d4c5a9;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 14px;
+    color: #9a8e80;
+    line-height: 1.7;
+    max-width: 580px;
+    margin-bottom: 24px;
+  }
+
+  .tech-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tech-chip {
+    font-size: 10px;
+    font-weight: 600;
+    color: #d4c5a9;
+    border: 1px solid rgba(212,197,169,0.3);
+    padding: 4px 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Stats strip */
+  .stats-strip {
+    background: #8b7355;
+    display: flex;
+    justify-content: space-around;
+    padding: 16px 52px;
+  }
+
+  .stat { text-align: center; color: #f5f0e8; }
+  .stat-n { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1; }
+  .stat-l { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #d4c5a9; margin-top: 3px; font-weight: 600; }
+  .stat-div { width: 1px; background: rgba(245,240,232,0.2); align-self: stretch; }
+
+  /* Body */
+  .body { padding: 40px 52px 32px; }
+
+  .section-eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #b07050;
+    margin-bottom: 16px;
+  }
+
+  /* Features */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .feat {
+    background: #fff;
+    border: 1px solid #e0d8cc;
+    padding: 18px 16px;
+  }
+
+  .feat-icon { font-size: 22px; margin-bottom: 10px; }
+
+  .feat-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3d3530;
+    margin-bottom: 5px;
+  }
+
+  .feat-desc {
+    font-size: 10.5px;
+    color: #9a8e80;
+    line-height: 1.55;
+  }
+
+  /* Two columns */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+
+  /* Role cards */
+  .role { padding: 22px; }
+  .role.dark { background: #3d3530; color: #f5f0e8; }
+  .role.light { background: #fff; border: 1px solid #e0d8cc; }
+
+  .role-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .role.dark .role-name { color: #f5f0e8; }
+  .role.light .role-name { color: #3d3530; }
+
+  .role-sub {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .role.dark .role-sub { color: #d4c5a9; }
+  .role.light .role-sub { color: #8b7355; }
+
+  .role-cred {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    padding: 5px 10px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+
+  .role.dark .role-cred { background: rgba(255,255,255,0.06); color: #d4c5a9; border: 1px solid rgba(255,255,255,0.12); }
+  .role.light .role-cred { background: #f5f0e8; color: #8b7355; border: 1px solid #d4c5a9; }
+
+  .role-item {
+    font-size: 11px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .role.light .role-item { border-bottom-color: #e8e0d4; }
+
+  .role.dark .role-item { color: #c8bfb0; }
+  .role.light .role-item { color: #3d3530; }
+
+  .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .role.dark .dot { background: #d4c5a9; }
+  .role.light .dot { background: #b07050; }
+
+  /* DB info */
+  .db-table { width: 100%; border-collapse: collapse; }
+  .db-table td { padding: 7px 12px; font-size: 11px; border-bottom: 1px solid #e8e0d4; }
+  .db-table td:first-child { color: #9a8e80; font-weight: 500; }
+  .db-table td:last-child { color: #3d3530; font-weight: 600; text-align: right; }
+  .db-table tr:last-child td { border-bottom: none; }
+
+  .db-box {
+    background: #fff;
+    border: 1px solid #e0d8cc;
+    overflow: hidden;
+  }
+
+  .db-box-header {
+    background: #3d3530;
+    padding: 10px 12px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #d4c5a9;
+  }
+
+  /* Footer */
+  .footer {
+    background: #ede8df;
+    border-top: 1px solid #d4c5a9;
+    padding: 18px 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left .course {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3d3530;
+  }
+
+  .footer-left .uni {
+    font-size: 10px;
+    color: #9a8e80;
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+  }
+
+  .team-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+    max-width: 360px;
+  }
+
+  .team-name {
+    font-size: 10px;
+    color: #8b7355;
+    background: #fff;
+    border: 1px solid #d4c5a9;
+    padding: 3px 10px;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="eyebrow">COSC 457 &nbsp;·&nbsp; Database Management Systems &nbsp;·&nbsp; Spring 2026</div>
+    <div class="main-title">Sports Store</div>
+    <div class="main-subtitle">Management System</div>
+    <div class="description">
+      A full-featured Java desktop application backed by a MySQL database — built to manage store locations, employees, products, inventory, customers, and sales through a unified tabbed interface.
+    </div>
+    <div class="tech-row">
+      <span class="tech-chip">Java 21 (Swing)</span>
+      <span class="tech-chip">MySQL 9.6</span>
+      <span class="tech-chip">Apache Maven</span>
+      <span class="tech-chip">MySQL JDBC 8.3</span>
+      <span class="tech-chip">39 Tables</span>
+      <span class="tech-chip">60+ Relationships</span>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stat"><div class="stat-n">10</div><div class="stat-l">Store Locations</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-n">20</div><div class="stat-l">Products</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-n">25</div><div class="stat-l">Sales</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-n">$5,916</div><div class="stat-l">Revenue</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-n">39</div><div class="stat-l">DB Tables</div></div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- Features -->
+    <div class="section-eyebrow">Application Features</div>
+    <div class="features-grid">
+      <div class="feat"><div class="feat-icon">📊</div><div class="feat-name">Dashboard</div><div class="feat-desc">Live metrics — revenue, stores, customers, low-stock alerts & charts</div></div>
+      <div class="feat"><div class="feat-icon">🏬</div><div class="feat-name">Stores & Departments</div><div class="feat-desc">Manage 10 store locations and 10 departments with full CRUD</div></div>
+      <div class="feat"><div class="feat-icon">👥</div><div class="feat-name">Employees</div><div class="feat-desc">Full employee records with store & department assignments</div></div>
+      <div class="feat"><div class="feat-icon">🏷️</div><div class="feat-name">Products & Categories</div><div class="feat-desc">Catalog with SKU, pricing, brand, supplier, size & color</div></div>
+      <div class="feat"><div class="feat-icon">📦</div><div class="feat-name">Inventory</div><div class="feat-desc">Stock levels with automatic low-stock row highlighting in red</div></div>
+      <div class="feat"><div class="feat-icon">💰</div><div class="feat-name">Sales & Reports</div><div class="feat-desc">Complete transactions, line items, and read-only summary reports</div></div>
+    </div>
+
+    <!-- Two columns -->
+    <div class="two-col">
+
+      <!-- User Roles -->
+      <div>
+        <div class="section-eyebrow">User Roles</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="role dark">
+            <div class="role-name">Manager</div>
+            <div class="role-sub">Full Access</div>
+            <div class="role-cred">manager / manager123</div>
+            <div class="role-item"><span class="dot"></span>All 12 tabs including Audit Log</div>
+            <div class="role-item"><span class="dot"></span>Add, Edit, Delete all records</div>
+            <div class="role-item" style="border:none"><span class="dot"></span>Complete change history</div>
+          </div>
+          <div class="role light">
+            <div class="role-name">Employee</div>
+            <div class="role-sub">Standard Access</div>
+            <div class="role-cred">employee / employee123</div>
+            <div class="role-item"><span class="dot"></span>All tabs except Audit Log</div>
+            <div class="role-item"><span class="dot"></span>Add, Edit, Delete records</div>
+            <div class="role-item" style="border:none"><span class="dot"></span>View reports & inventory</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DB Info -->
+      <div>
+        <div class="section-eyebrow">Database Overview</div>
+        <div class="db-box">
+          <div class="db-box-header">Schema Statistics</div>
+          <table class="db-table">
+            <tr><td>Database Engine</td><td>MySQL 9.6</td></tr>
+            <tr><td>Total Tables</td><td>39 Tables</td></tr>
+            <tr><td>Foreign Keys</td><td>70+</td></tr>
+            <tr><td>Relationships</td><td>60+</td></tr>
+            <tr><td>Host Language</td><td>Java 21 (Swing)</td></tr>
+            <tr><td>Build Tool</td><td>Apache Maven 3.9</td></tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">
+      <div class="course">COSC 457 — Database Management Systems</div>
+      <div class="uni">Towson University &nbsp;·&nbsp; Spring 2026 &nbsp;·&nbsp; Team Project</div>
+    </div>
+    <div class="team-list">
+      <span class="team-name">Love Nepali</span>
+      <span class="team-name">Ryan Domathoti</span>
+      <span class="team-name">Olaya Latigo</span>
+      <span class="team-name">Gedone Sife</span>
+      <span class="team-name">Joshua Walsh</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
