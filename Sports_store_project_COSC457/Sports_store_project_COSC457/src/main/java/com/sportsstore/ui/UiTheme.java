@@ -68,7 +68,7 @@ final class UiTheme {
 
         JTableHeader header = table.getTableHeader();
         header.setBackground(NAVY);
-        header.setForeground(Color.WHITE);
+        header.setForeground(INK);
         header.setFont(BODY_BOLD);
         header.setReorderingAllowed(false);
         header.setPreferredSize(new Dimension(header.getPreferredSize().width, 34));
